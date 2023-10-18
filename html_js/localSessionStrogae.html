@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Local Storage vs Session Storage</h1>
+
+    <label for="data">Enter Input:</label>
+    <input type="text" id="data" />
+
+    <button type="button" id="l">Local Storage</button>
+    <button type="button" id="s">Session Storage</button>
+
+    <div id="displayLocal"></div>
+    <div id="displaySession"></div>
+
+    <script type="text/javascript">
+      document.getElementById('l').addEventListener('click', function () {
+        var data = document.getElementById('data').value;
+        if (data !== '') {
+          localStorage.setItem('local_data', data);
+          document.getElementById('displayLocal').textContent = 'Local Storage Data:' + data;
+        }
+      });
+      document.getElementById('s').addEventListener('click', function () {
+        var data = document.getElementById('data').value;
+        if (data !== '') {
+          sessionStorage.setItem('session_data', data);
+          document.getElementById('displaySession').textContent = 'Session Storage Data:' + data;
+        }
+      });
+
+      var localData = localStorage.getItem('local_data');
+      if (localData) {
+        document.getElementById('displayLocal').textContent = 'Local Storage Data:' + localData;
+      }
+
+      var sessData = sessionStorage.getItem('session_data');
+      if (sessData) {
+        document.getElementById('displaySession').textContent = 'Session Storage Data:' + sessData;
+      }
+    </script>
+  </body>
+</html>

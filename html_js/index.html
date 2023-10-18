@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/main.js"></script>
+    <!-- <script src="js/passwordmeter.js"></script>
+    <script src="js/datepicker.js"></script> -->
+  </head>
+  <body onload="loadPage()" style="height: 1000px">
+    <button id="lightsOn" class="" onclick="clickLights('lightson')">Lights On</button>
+
+    <img id="bulb" src="pic_bulboff.gif" />
+
+    <button id="lightsOff" onclick="clickLights('lightsoff')">Lights Off</button>
+
+    <p id="demo">Hello World!</p>
+    <button id="changeDemo">Get Kodego Student Name From BE</button>
+
+    <script>
+      window.addEventListener('resize', function () {
+        console.log('resizing', window.innerWidth);
+      });
+      document.getElementById('demo').innerHTML = 'Hello Kodego!';
+      document.getElementById('lightsOn').setAttribute('class', 'btn-primary');
+      //document.querySelector("#lightsOn");
+      //document.getElementById("lightsOn");
+      //   function clickLights(type) {
+      //     if (type === 'lightson') document.getElementById('bulb').src = 'pic_bulbon.gif';
+      //     else document.getElementById('bulb').src = 'pic_bulboff.gif';
+      //   }
+      //document.getElementById('bulb').src = 'pic_bulbon.gif';
+      //   function lightsOff() {
+      //     document.getElementById('bulb').src = 'pic_bulboff.gif';
+      //   }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List</title>
+    <style>
+      /* styles.css */
+      li {
+        list-style: none;
+        background-color: #f2f2f2;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shopping List</h1>
+    <!-- <script>
+      doucment.write('<h1>Hello</h1>');
+    </script> -->
+    <ul id="shoppingList"></ul>
+    <script>
+      // script.js
+      const shoppingItems = ['Apples', 'Bananas', 'Milk', 'Bread', 'Eggs'];
+
+      // Select the <ul> element by its id
+      const shoppingListElement = document.getElementById('shoppingList');
+
+      // Loop through the shoppingItems array and create <li> elements for each item
+      for (let i = 0; i < shoppingItems.length; i++) {
+        // Create a new <li> element
+        //<li></li>
+        const listItem = document.createElement('li');
+
+        // Set the content for the <li> element
+        // <li>Apples</li>
+        listItem.textContent = shoppingItems[i];
+
+        // Append the <li> element to the <ul> element
+        shoppingListElement.appendChild(listItem);
+      }
+    </script>
+    <script type="text/javascript" src="../JS_OTHERS/main.mjs"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="getLocation">Get Location</button>
+    <div id="locationInfo"></div>
+
+    <script type="text/javascript">
+      document.getElementById('getLocation').addEventListener('click', function () {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const lat = position.coords.latitude;
+          const long = position.coords.longitude;
+          document.getElementById(
+            'locationInfo'
+          ).textContent = `Latitude: ${lat}, Longitude: ${long}`;
+        });
+      });
+    </script>
+  </body>
+</html>

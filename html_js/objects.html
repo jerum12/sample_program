@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student List</title>
+  </head>
+  <body>
+    <h1>Students List</h1>
+    <div id="studentList"></div>
+
+    <script>
+      //nag kuha ako data from backend
+      const studentList = [
+        { name: 'Edgar', age: 25 },
+        { name: 'Giovanni', age: 15 },
+        { name: 'Katrina', age: 11 },
+        { name: 'Lemuel', age: 20 },
+        { name: 'Melvin', age: 16 },
+        { name: 'Prince', age: 17 },
+        { name: 'Ryan', age: 22 },
+        { name: 'Zepphania', age: 14 },
+      ];
+
+      const studentListElement = document.getElementById('studentList');
+
+      for (let i = 0; studentList.length > 0; i++) {
+        //create li
+        let pElement = document.createElement('p');
+
+        pElement.textContent = studentList[i].name;
+
+        studentListElement.appendChild(pElement);
+      }
+    </script>
+  </body>
+</html>

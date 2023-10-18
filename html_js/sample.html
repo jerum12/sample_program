@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css" />
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Sample Application</h1>
+      <div class="row">
+        <div class="col-12">
+          <h2>BLOG POST</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus itaque quisquam
+            pariatur beatae ducimus laboriosam saepe, error inventore, illo quos quo quasi commodi
+            officia consequuntur repellendus. Molestiae harum totam libero eveniet aperiam
+            voluptatum similique aliquid nulla beatae facilis! Vel quisquam id necessitatibus
+            molestiae doloribus explicabo debitis? Dicta fugiat molestias dolorum?
+          </p>
+          <h5>Comments</h5>
+          <div id="comments"></div>
+          <div>
+            <h6>Add Comment</h6>
+            <form id="commentForm">
+              <div class="form-group mb-2">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="commentInput"
+                  placeholder="Enter your comment!"
+                />
+                <span class="error" id="commentError"></span>
+              </div>
+              <button class="btn btn-primary" type="submit">Add Comment</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const commentForm = document.getElementById('commentForm');
+
+      commentForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const commentInput = document.getElementById('commentInput');
+        addComment(commentInput.value);
+        commentInput.value = '';
+      });
+
+      function addComment(commentInputValue) {
+        const commentError = document.getElementById('commentError');
+        const inputComment = document.getElementById('commentInput');
+        const comments = document.getElementById('comments');
+
+        commentError.textContent = '';
+        inputComment.style.border = '1px solid gray';
+
+        if (commentInputValue === '') {
+          commentError.textContent = 'Comment is required!';
+          inputComment.style.border = '1px solid red';
+          return false;
+        }
+
+        // const pTag = document.createElement('p');
+        // pTag.textContent = commentInputValue;
+        // comments.appendChild(pTag);
+
+        const divTag = document.createElement('div');
+        divTag.setAttribute('class', 'alert alert-secondary');
+        //divTag.classList.add('alert');
+        //divTag.classList.add('alert-secondary');
+        divTag.innerHTML = `
+                    <div class="row">
+                        <div class="col-10">
+                               <p> ${commentInputValue} </p>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-warning" type="button" onclick="editComment(this)"> <i class="fas fa-pencil-alt"></i> </button>
+                            <button class="btn btn-danger" type="button" onclick="deleteComment(this)"> <i class="fas fa-trash"></i>  </button>
+                        </div>
+                    </div
+         
+        `;
+
+        comments.appendChild(divTag);
+
+        //console.log(commentInputValue);
+      }
+
+      function deleteComment(buttonThis) {
+        buttonThis.parentElement.parentElement.parentElement.remove();
+      }
+
+      function editComment(buttonThis) {
+        const commentPDiv = buttonThis.parentElement.previousElementSibling;
+        const commentPDivSelectorP = commentPDiv.querySelector('p');
+        const commentPDivSelectorPTextContent = commentPDivSelectorP.textContent;
+
+        //create input element
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.classList.add('form-control');
+        input.classList.add('mb-3');
+        input.value = commentPDivSelectorPTextContent;
+
+        //create button element
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn btn-success';
+        btn.textContent = 'Save';
+
+        btn.onclick = function () {
+          const newInputValue = input.value;
+          commentPDivSelectorP.textContent = newInputValue;
+          commentPDiv.replaceChild(commentPDivSelectorP, input);
+          commentPDiv.removeChild(btn);
+        };
+
+        commentPDiv.replaceChild(input, commentPDivSelectorP);
+        commentPDiv.appendChild(btn);
+      }
+    </script>
+  </body>
+</html>

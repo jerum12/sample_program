@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Navigation</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Dom Navigation</h1>
+      <ul id="ulIto">
+        <li id="liAko">Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+      <div class="childContainer">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quam eos alias!</p>
+      </div>
+
+      <div id="gp">
+        <div>
+          <div>
+            <span>
+              <p id="anak"></p>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const container = document.querySelector('#anak');
+      const gp = container.parentElement.textContent;
+      gp.innerHTML = 'Error message!';
+      //console.log(container.nextSibling.nextSibling);
+    </script>
+  </body>
+</html>
